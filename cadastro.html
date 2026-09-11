@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cadastro de doadores e voluntários da ONG Esperança Solidária.">
+  <title>ONG Esperança Solidária | Cadastro</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/mascaras.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a href="index.html" class="logo-link">
+      <picture>
+        <source srcset="img/logo.webp" type="image/webp">
+        <img src="img/logo.png" alt="Logotipo da ONG Esperança Solidária" width="180" height="60">
+      </picture>
+    </a>
+    <nav aria-label="Menu principal">
+      <ul class="nav-list">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="projetos.html">Projetos</a></li>
+        <li><a href="cadastro.html" aria-current="page">Cadastro</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Cadastro de doadores e voluntários</h1>
+    <p>Preencha os dados abaixo. Campos com asterisco (*) são obrigatórios.</p>
+
+    <form action="#" method="post" novalidate>
+      <fieldset>
+        <legend>Como você quer ajudar *</legend>
+        <p>
+          <label>
+            <input type="radio" name="tipo" value="voluntario" required>
+            Quero ser voluntário(a)
+          </label>
+        </p>
+        <p>
+          <label>
+            <input type="radio" name="tipo" value="doador" required>
+            Quero ser doador(a)
+          </label>
+        </p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Seus dados *</legend>
+        <p>
+          <label for="nome">Nome completo *</label>
+          <input type="text" id="nome" name="nome" required minlength="3" maxlength="100" autocomplete="name" title="Informe seu nome completo">
+        </p>
+        <p>
+          <label for="email">E-mail *</label>
+          <input type="email" id="email" name="email" required maxlength="100" autocomplete="email" title="Informe um e-mail válido">
+        </p>
+        <p>
+          <label for="nascimento">Data de nascimento *</label>
+          <input type="date" id="nascimento" name="nascimento" required max="2010-09-10" title="Informe sua data de nascimento">
+        </p>
+        <p>
+          <label for="cpf">CPF *</label>
+          <input type="text" id="cpf" name="cpf" required maxlength="14" inputmode="numeric" pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}" title="Informe o CPF no formato 000.000.000-00" placeholder="000.000.000-00">
+        </p>
+        <p>
+          <label for="telefone">Telefone *</label>
+          <input type="tel" id="telefone" name="telefone" required maxlength="15" inputmode="tel" pattern="\([0-9]{2}\) [0-9]{4,5}-[0-9]{4}" title="Informe o telefone no formato (00) 00000-0000" placeholder="(00) 00000-0000">
+        </p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Endereço *</legend>
+        <p>
+          <label for="cep">CEP *</label>
+          <input type="text" id="cep" name="cep" required maxlength="9" inputmode="numeric" pattern="[0-9]{5}-[0-9]{3}" autocomplete="postal-code" title="Informe o CEP no formato 00000-000" placeholder="00000-000">
+        </p>
+        <p>
+          <label for="rua">Rua *</label>
+          <input type="text" id="rua" name="rua" required minlength="3" maxlength="120" autocomplete="address-line1" title="Informe o nome da rua">
+        </p>
+        <p>
+          <label for="numero">Número *</label>
+          <input type="text" id="numero" name="numero" required maxlength="10" pattern="[0-9A-Za-z\/\-]+" title="Informe o número ou S/N">
+        </p>
+        <p>
+          <label for="cidade">Cidade *</label>
+          <input type="text" id="cidade" name="cidade" required minlength="2" maxlength="80" autocomplete="address-level2" title="Informe a cidade">
+        </p>
+        <p>
+          <label for="estado">Estado *</label>
+          <select id="estado" name="estado" required autocomplete="address-level1" title="Selecione o estado">
+            <option value="">Selecione</option>
+            <option value="AC">Acre</option>
+            <option value="AL">Alagoas</option>
+            <option value="AP">Amapá</option>
+            <option value="AM">Amazonas</option>
+            <option value="BA">Bahia</option>
+            <option value="CE">Ceará</option>
+            <option value="DF">Distrito Federal</option>
+            <option value="ES">Espírito Santo</option>
+            <option value="GO">Goiás</option>
+            <option value="MA">Maranhão</option>
+            <option value="MT">Mato Grosso</option>
+            <option value="MS">Mato Grosso do Sul</option>
+            <option value="MG">Minas Gerais</option>
+            <option value="PA">Pará</option>
+            <option value="PB">Paraíba</option>
+            <option value="PR">Paraná</option>
+            <option value="PE">Pernambuco</option>
+            <option value="PI">Piauí</option>
+            <option value="RJ">Rio de Janeiro</option>
+            <option value="RN">Rio Grande do Norte</option>
+            <option value="RS" selected>Rio Grande do Sul</option>
+            <option value="RO">Rondônia</option>
+            <option value="RR">Roraima</option>
+            <option value="SC">Santa Catarina</option>
+            <option value="SP">São Paulo</option>
+            <option value="SE">Sergipe</option>
+            <option value="TO">Tocantins</option>
+          </select>
+        </p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Mais informações</legend>
+        <p>
+          <label for="observacoes">Observações (opcional)</label>
+          <textarea id="observacoes" name="observacoes" rows="4" maxlength="500" title="Disponibilidade de horários ou mensagem"></textarea>
+        </p>
+      </fieldset>
+
+      <p class="form-actions">
+        <button type="submit">Enviar cadastro</button>
+        <button type="reset">Limpar formulário</button>
+      </p>
+    </form>
+  </main>
+
+  <footer class="site-footer">
+    <h2>Contato</h2>
+    <address>
+      <p><strong>ONG Esperança Solidária</strong></p>
+      <p>Rua das Hortênsias, 120 — Centro, Gramado — RS, 95670-000</p>
+      <p>Telefone: <a href="tel:+555432101234">(54) 3210-1234</a></p>
+      <p>E-mail: <a href="mailto:contato@esperancasolidaria.org.br">contato@esperancasolidaria.org.br</a></p>
+    </address>
+    <p><small>&copy; 2026 ONG Esperança Solidária. Todos os direitos reservados.</small></p>
+  </footer>
+</body>
+</html>
