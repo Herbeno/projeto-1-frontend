@@ -16,34 +16,48 @@
         <img src="img/logo.png" alt="Logotipo da ONG Esperança Solidária" width="180" height="60">
       </picture>
     </a>
-    <nav aria-label="Menu principal">
+    <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="nav-menu" class="site-nav" aria-label="Menu principal">
       <ul class="nav-list">
         <li><a href="index.html">Início</a></li>
-        <li><a href="projetos.html">Projetos</a></li>
+        <li class="nav-item-dropdown">
+          <button type="button" class="nav-dropdown-toggle" aria-expanded="false">Como ajudar</button>
+          <ul class="nav-dropdown">
+            <li><a href="projetos.html">Projetos</a></li>
+            <li><a href="projetos.html#titulo-voluntario">Voluntariado</a></li>
+            <li><a href="projetos.html#titulo-doacao">Doações</a></li>
+          </ul>
+        </li>
         <li><a href="cadastro.html" aria-current="page">Cadastro</a></li>
       </ul>
     </nav>
   </header>
 
-  <main>
-    <h1>Cadastro de doadores e voluntários</h1>
-    <p>Preencha os dados abaixo. Campos com asterisco (*) são obrigatórios.</p>
+  <main class="page-cadastro">
+    <header class="page-intro">
+      <h1>Cadastro de doadores e voluntários</h1>
+      <p>Preencha os dados abaixo. Campos com asterisco (*) são obrigatórios.</p>
+      <div class="alert alert--info" role="status">
+        <strong>Informação</strong>
+        Seus dados são usados apenas para contato sobre voluntariado e campanhas de doação.
+      </div>
+    </header>
 
-    <form action="#" method="post" novalidate>
+    <form action="#" method="post" novalidate class="form-cadastro">
       <fieldset>
         <legend>Como você quer ajudar *</legend>
-        <p>
-          <label>
+        <div class="form-radio-group">
+          <label class="form-radio">
             <input type="radio" name="tipo" value="voluntario" required>
             Quero ser voluntário(a)
           </label>
-        </p>
-        <p>
-          <label>
+          <label class="form-radio">
             <input type="radio" name="tipo" value="doador" required>
             Quero ser doador(a)
           </label>
-        </p>
+        </div>
       </fieldset>
 
       <fieldset>
@@ -134,8 +148,36 @@
       <p class="form-actions">
         <button type="submit">Enviar cadastro</button>
         <button type="reset">Limpar formulário</button>
+        <button type="button" class="btn btn--outline" id="abrir-modal">Política de privacidade</button>
       </p>
     </form>
+
+    <details class="feedback-demo">
+      <summary>Ver exemplos de componentes de feedback</summary>
+      <p class="feedback-demo__hint">Expanda esta seção para visualizar alertas, modal e toast (útil para capturas de tela da atividade).</p>
+      <div class="alert-grid">
+        <div class="alert alert--success" role="status">
+          <strong>Sucesso</strong>
+          Cadastro enviado com sucesso.
+        </div>
+        <div class="alert alert--warning" role="alert">
+          <strong>Atenção</strong>
+          Verifique CPF e telefone antes de enviar.
+        </div>
+        <div class="alert alert--error" role="alert">
+          <strong>Erro</strong>
+          Não foi possível concluir o cadastro.
+        </div>
+        <div class="alert alert--info" role="status">
+          <strong>Informação</strong>
+          Dados usados apenas para contato da ONG.
+        </div>
+      </div>
+      <p class="feedback-demo__actions">
+        <button type="button" class="btn btn--outline" id="demo-modal">Abrir modal de exemplo</button>
+        <button type="button" class="btn btn--outline" id="demo-toast">Exibir toast de exemplo</button>
+      </p>
+    </details>
   </main>
 
   <footer class="site-footer">
@@ -148,5 +190,28 @@
     </address>
     <p><small>&copy; 2026 ONG Esperança Solidária. Todos os direitos reservados.</small></p>
   </footer>
+
+  <div id="modal-privacidade" class="modal" role="dialog" aria-labelledby="modal-titulo" aria-hidden="true">
+    <div class="modal__overlay" aria-hidden="true"></div>
+    <div class="modal__content">
+      <button type="button" class="modal__close" id="fechar-modal" aria-label="Fechar modal">&times;</button>
+      <h2 id="modal-titulo">Política de privacidade</h2>
+      <p>
+        A ONG Esperança Solidária coleta apenas os dados necessários para contato sobre
+        voluntariado e doações. Não compartilhamos informações com terceiros sem consentimento.
+      </p>
+      <p>
+        Você pode solicitar a exclusão dos seus dados pelo e-mail de contato da organização.
+      </p>
+    </div>
+  </div>
+
+  <div id="toast-cadastro" class="toast" role="status" aria-live="polite">
+    <strong>Cadastro enviado!</strong>
+    Recebemos seus dados. Entraremos em contato em breve.
+  </div>
+
+  <script src="js/menu.js"></script>
+  <script src="js/feedback.js"></script>
 </body>
 </html>

@@ -15,17 +15,29 @@
         <img src="img/logo.png" alt="Logotipo da ONG Esperança Solidária" width="180" height="60">
       </picture>
     </a>
-    <nav aria-label="Menu principal">
+    <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="nav-menu" class="site-nav" aria-label="Menu principal">
       <ul class="nav-list">
         <li><a href="index.html">Início</a></li>
-        <li><a href="projetos.html" aria-current="page">Projetos</a></li>
+        <li class="nav-item-dropdown">
+          <button type="button" class="nav-dropdown-toggle" aria-expanded="false">Como ajudar</button>
+          <ul class="nav-dropdown">
+            <li><a href="projetos.html" aria-current="page">Projetos</a></li>
+            <li><a href="projetos.html#titulo-voluntario">Voluntariado</a></li>
+            <li><a href="projetos.html#titulo-doacao">Doações</a></li>
+          </ul>
+        </li>
         <li><a href="cadastro.html">Cadastro</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <h1>Projetos e como participar</h1>
+    <header class="page-intro">
+      <h1>Projetos e como participar</h1>
+    </header>
 
     <section aria-labelledby="titulo-frentes">
       <h2 id="titulo-frentes">Nossas frentes de atuação</h2>
@@ -37,8 +49,10 @@
 
     <section aria-labelledby="titulo-projetos">
       <h2 id="titulo-projetos">Projetos em andamento</h2>
+      <div class="grid-projetos">
 
       <article class="card-projeto">
+        <span class="badge badge--educacao">Educação</span>
         <h3>Educação na comunidade</h3>
         <figure>
           <picture>
@@ -51,6 +65,7 @@
       </article>
 
       <article class="card-projeto">
+        <span class="badge badge--alimentacao">Alimentação</span>
         <h3>Cestas e cozinha solidária</h3>
         <figure>
           <picture>
@@ -63,6 +78,7 @@
       </article>
 
       <article class="card-projeto">
+        <span class="badge badge--acolhimento">Acolhimento</span>
         <h3>Acolhimento e orientação</h3>
         <figure>
           <picture>
@@ -73,6 +89,7 @@
         </figure>
         <p>Atendimento psicossocial, encaminhamento a serviços públicos e apoio na regularização de documentos.</p>
       </article>
+      </div>
     </section>
 
     <section aria-labelledby="titulo-voluntario">
@@ -113,5 +130,6 @@
     </address>
     <p><small>&copy; 2026 ONG Esperança Solidária. Todos os direitos reservados.</small></p>
   </footer>
+  <script src="js/menu.js"></script>
 </body>
 </html>
