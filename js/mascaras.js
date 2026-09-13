@@ -1,7 +1,3 @@
-/**
- * Máscaras de entrada para CPF, telefone e CEP.
- * A validação estrutural continua no HTML (pattern, required).
- */
 function mascaraCPF(valor) {
   return valor
     .replace(/\D/g, "")
@@ -26,26 +22,29 @@ function mascaraCEP(valor) {
     .slice(0, 9);
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+export function initMascaras() {
   const cpf = document.getElementById("cpf");
   const telefone = document.getElementById("telefone");
   const cep = document.getElementById("cep");
 
-  if (cpf) {
+  if (cpf && !cpf.dataset.bound) {
+    cpf.dataset.bound = "true";
     cpf.addEventListener("input", () => {
       cpf.value = mascaraCPF(cpf.value);
     });
   }
 
-  if (telefone) {
+  if (telefone && !telefone.dataset.bound) {
+    telefone.dataset.bound = "true";
     telefone.addEventListener("input", () => {
       telefone.value = mascaraTelefone(telefone.value);
     });
   }
 
-  if (cep) {
+  if (cep && !cep.dataset.bound) {
+    cep.dataset.bound = "true";
     cep.addEventListener("input", () => {
       cep.value = mascaraCEP(cep.value);
     });
   }
-});
+}

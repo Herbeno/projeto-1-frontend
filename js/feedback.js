@@ -1,55 +1,74 @@
-document.addEventListener("DOMContentLoaded", () => {
+let feedbackInitialized = false;
+let lastFocus = null;
+
+function abrirModal(trigger) {
   const modal = document.getElementById("modal-privacidade");
-  const openModalBtns = document.querySelectorAll("#abrir-modal, #demo-modal");
+  const closeModalBtn = document.getElementById("fechar-modal");
+  if (!modal) return;
+
+  lastFocus = trigger || document.activeElement;
+  modal.classList.add("is-open");
+  modal.setAttribute("aria-hidden", "false");
+  closeModalBtn?.focus();
+}
+
+function fecharModal() {
+  const modal = document.getElementById("modal-privacidade");
+  if (!modal) return;
+
+  modal.classList.remove("is-open");
+  modal.setAttribute("aria-hidden", "true");
+  if (lastFocus && typeof lastFocus.focus === "function") {
+    lastFocus.focus();
+  }
+}
+
+function mostrarToast() {
+  const toast = document.getElementById("toast-cadastro");
+  if (!toast) return;
+
+  toast.classList.add("is-visible");
+  setTimeout(() => {
+    toast.classList.remove("is-visible");
+  }, 4000);
+}
+
+export function initFeedback() {
+  const modal = document.getElementById("modal-privacidade");
   const closeModalBtn = document.getElementById("fechar-modal");
   const modalOverlay = modal?.querySelector(".modal__overlay");
   const form = document.querySelector(".form-cadastro");
-  const toast = document.getElementById("toast-cadastro");
-  const demoToastBtn = document.getElementById("demo-toast");
-  let lastFocus = null;
 
-  function abrirModal(trigger) {
-    if (!modal) return;
-    lastFocus = trigger || document.activeElement;
-    modal.classList.add("is-open");
-    modal.setAttribute("aria-hidden", "false");
-    closeModalBtn?.focus();
-  }
-
-  function fecharModal() {
-    if (!modal) return;
-    modal.classList.remove("is-open");
-    modal.setAttribute("aria-hidden", "true");
-    if (lastFocus && typeof lastFocus.focus === "function") {
-      lastFocus.focus();
-    }
-  }
-
-  openModalBtns.forEach((btn) => {
+  document.querySelectorAll("#abrir-modal, #demo-modal").forEach((btn) => {
+    if (btn.dataset.bound) return;
+    btn.dataset.bound = "true";
     btn.addEventListener("click", () => abrirModal(btn));
   });
 
-  closeModalBtn?.addEventListener("click", fecharModal);
-  modalOverlay?.addEventListener("click", fecharModal);
-
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && modal?.classList.contains("is-open")) {
-      fecharModal();
-    }
-  });
-
-  function mostrarToast() {
-    if (!toast) return;
-    toast.classList.add("is-visible");
-    setTimeout(() => {
-      toast.classList.remove("is-visible");
-    }, 4000);
+  const demoToastBtn = document.getElementById("demo-toast");
+  if (demoToastBtn && !demoToastBtn.dataset.bound) {
+    demoToastBtn.dataset.bound = "true";
+    demoToastBtn.addEventListener("click", mostrarToast);
   }
 
-  demoToastBtn?.addEventListener("click", mostrarToast);
+  if (form && !form.dataset.bound) {
+    form.dataset.bound = "true";
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      mostrarToast();
+    });
+  }
 
-  form?.addEventListener("submit", (e) => {
-    e.preventDefault();
-    mostrarToast();
-  });
-});
+  if (!feedbackInitialized) {
+    closeModalBtn?.addEventListener("click", fecharModal);
+    modalOverlay?.addEventListener("click", fecharModal);
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && modal?.classList.contains("is-open")) {
+        fecharModal();
+      }
+    });
+
+    feedbackInitialized = true;
+  }
+}
