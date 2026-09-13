@@ -485,6 +485,29 @@ textarea:focus {
   margin-bottom: var(--space-4);
 }
 
+.historico-cadastros {
+  margin-top: var(--space-6);
+  padding: var(--space-4);
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-md);
+}
+
+.historico-cadastros__hint {
+  font-size: var(--texto-xs);
+  color: var(--cor-texto-suave);
+  margin-top: 0;
+}
+
+.historico-cadastros__lista {
+  margin: var(--space-3) 0 0;
+  padding-left: var(--space-5);
+}
+
+.historico-cadastros__lista li {
+  margin-bottom: var(--space-2);
+}
+
 .form-actions {
   display: flex;
   flex-wrap: wrap;

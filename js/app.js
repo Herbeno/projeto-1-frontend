@@ -4,6 +4,7 @@ import { initFeedback } from "./feedback.js";
 import { initMascaras } from "./mascaras.js";
 import { renderProjetos } from "./components.js";
 import { initValidation } from "./validation.js";
+import { initStorage } from "./storage.js";
 
 const outlet = document.getElementById("app");
 
@@ -18,6 +19,7 @@ function initPageFeatures(route) {
   if (route.nav === "cadastro") {
     initMascaras();
     initValidation();
+    initStorage();
   }
 }
 

@@ -56,7 +56,19 @@ export function initFeedback() {
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
       const { validarFormulario } = await import("./validation.js");
+      const {
+        extrairDadosFormulario,
+        salvarCadastro,
+        limparRascunho,
+        renderHistoricoCadastros,
+      } = await import("./storage.js");
+
       if (validarFormulario(form)) {
+        const dados = extrairDadosFormulario(form);
+        salvarCadastro(dados);
+        limparRascunho();
+        renderHistoricoCadastros();
+        form.reset();
         mostrarToast();
       }
     });
