@@ -53,9 +53,12 @@ export function initFeedback() {
 
   if (form && !form.dataset.bound) {
     form.dataset.bound = "true";
-    form.addEventListener("submit", (event) => {
+    form.addEventListener("submit", async (event) => {
       event.preventDefault();
-      mostrarToast();
+      const { validarFormulario } = await import("./validation.js");
+      if (validarFormulario(form)) {
+        mostrarToast();
+      }
     });
   }
 

@@ -460,6 +460,31 @@ textarea:focus {
   box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.12);
 }
 
+.field--error {
+  border-color: #c0392b !important;
+  box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.12);
+}
+
+.field--success {
+  border-color: var(--cor-primaria) !important;
+  box-shadow: 0 0 0 3px rgba(31, 107, 74, 0.12);
+}
+
+.field-msg {
+  display: block;
+  margin-top: var(--space-1);
+  font-size: var(--texto-xs);
+  font-family: var(--fonte-titulo);
+}
+
+.field-msg--error {
+  color: #c0392b;
+}
+
+#form-alert {
+  margin-bottom: var(--space-4);
+}
+
 .form-actions {
   display: flex;
   flex-wrap: wrap;
