@@ -5,6 +5,7 @@ import { initMascaras } from "./mascaras.js";
 import { renderProjetos } from "./components.js";
 import { initValidation } from "./validation.js";
 import { initStorage } from "./storage.js";
+import { initTheme } from "./theme.js";
 
 const outlet = document.getElementById("app");
 
@@ -29,6 +30,7 @@ const router = createRouter({
 });
 
 document.addEventListener("DOMContentLoaded", () => {
+  initTheme();
   initMenu();
   router.init();
 });

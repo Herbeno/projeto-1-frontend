@@ -964,3 +964,93 @@ button[type="reset"]:active {
     font-size: var(--texto-xl);
   }
 }
+
+/* Controles de tema */
+.theme-controls {
+  display: flex;
+  gap: var(--space-1);
+  margin-left: auto;
+}
+
+.theme-btn {
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--texto-xs);
+  font-family: var(--fonte-titulo);
+  border: 2px solid var(--cor-borda);
+  border-radius: var(--raio-sm);
+  background: var(--cor-superficie);
+  color: var(--cor-texto);
+  cursor: pointer;
+}
+
+.theme-btn[aria-pressed="true"] {
+  background: var(--cor-primaria);
+  color: #fff;
+  border-color: var(--cor-primaria);
+}
+
+@media (min-width: 768px) {
+  .site-header .theme-controls {
+    margin-left: 0;
+    order: 2;
+  }
+}
+
+/* Modo escuro */
+[data-theme="dark"] {
+  --cor-fundo: #0f1a16;
+  --cor-superficie: #1a2e24;
+  --cor-texto: #f0f4f2;
+  --cor-texto-suave: #c8d4ce;
+  --cor-borda: #3d5c4a;
+  --cor-secundaria: #a8dcc4;
+  --cor-link-footer: #a8dcc4;
+  --cor-botao-reset: #2a3d34;
+}
+
+[data-theme="dark"] .site-header,
+[data-theme="dark"] form,
+[data-theme="dark"] .card-projeto,
+[data-theme="dark"] .bloco-conteudo {
+  background: var(--cor-superficie);
+}
+
+/* Alto contraste — WCAG */
+[data-theme="contrast"] {
+  --cor-fundo: #000000;
+  --cor-superficie: #000000;
+  --cor-texto: #ffffff;
+  --cor-texto-suave: #ffffff;
+  --cor-borda: #ffffff;
+  --cor-primaria: #ffff00;
+  --cor-primaria-clara: #ffff00;
+  --cor-secundaria: #ffffff;
+  --cor-destaque: #ffff00;
+  --cor-link-footer: #ffff00;
+  --cor-botao-reset: #000000;
+}
+
+[data-theme="contrast"] a {
+  color: #ffff00;
+  text-decoration: underline;
+}
+
+[data-theme="contrast"] .btn,
+[data-theme="contrast"] button[type="submit"] {
+  background: #ffff00;
+  color: #000000 !important;
+  border: 2px solid #ffffff;
+}
+
+[data-theme="contrast"] input,
+[data-theme="contrast"] select,
+[data-theme="contrast"] textarea {
+  background: #000000;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+}
+
+[data-theme="contrast"] .site-footer {
+  background: #000000;
+  border-top: 3px solid #ffffff;
+}
