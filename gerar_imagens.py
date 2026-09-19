@@ -3,7 +3,7 @@
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
-IMG = Path(__file__).parent / "img"
+IMG = Path(__file__).parent / "public" / "img"
 
 
 def save_all(name: str, img: Image.Image) -> None:

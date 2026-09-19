@@ -1,5 +1,5 @@
-import dayjs from "https://cdn.jsdelivr.net/npm/dayjs@1.11.13/+esm";
-import ptBr from "https://cdn.jsdelivr.net/npm/dayjs@1.11.13/locale/pt-br.js/+esm";
+import dayjs from "dayjs";
+import ptBr from "dayjs/locale/pt-br.js";
 
 dayjs.locale(ptBr);
 

@@ -38,14 +38,20 @@ Plataforma institucional que apresenta a missão da ONG, projetos sociais em and
 git clone https://github.com/Herbeno/projeto-1-frontend.git
 cd projeto-1-frontend
 
-# 2. Iniciar servidor local
-npx serve .
+# 2. Instalar dependências
+npm install
 
-# 3. Acessar no navegador
-# http://localhost:3000
+# 3. Desenvolvimento (Vite)
+npm run dev
+
+# 4. Build de produção (minificação JS/CSS)
+npm run build
+
+# 5. Testar a build localmente
+npm run preview
 ```
 
-Alternativa: abrir a pasta no Cursor/VS Code e usar **Live Server** no `index.html`.
+Os templates ficam em `public/html/` e as imagens em `public/img/`, publicados na raiz do site em produção.
 
 ## Rotas da SPA
 
@@ -60,7 +66,10 @@ Alternativa: abrir a pasta no Cursor/VS Code e usar **Live Server** no `index.ht
 ```
 projeto-1-frontend/
 ├── index.html          # Shell da SPA
-├── html/               # Templates parciais (views)
+├── vite.config.js      # Build de produção (Vite)
+├── public/
+│   ├── html/           # Templates parciais (views)
+│   └── img/            # Imagens
 ├── css/styles.css      # Design System e componentes
 ├── js/
 │   ├── app.js          # Entrada da aplicação
@@ -72,7 +81,6 @@ projeto-1-frontend/
 │   ├── feedback.js     # Modal e toast
 │   ├── mascaras.js     # Máscaras de entrada
 │   └── menu.js         # Menu hambúrguer
-└── img/                # Recursos visuais
 ```
 
 ## Deploy (produção)
@@ -81,7 +89,7 @@ A aplicação está publicada em:
 
 **https://projeto-frontend-faculdade.netlify.app/**
 
-O deploy é automático via integração GitHub → Netlify na branch `main`. Não há etapa de build — projeto estático servido diretamente.
+O Netlify executa `npm run build` (Vite) e publica a pasta `dist/`, com JavaScript e CSS minificados. O deploy automático na branch `main` será reativado ao concluir o projeto.
 
 ## Controle de versões (GitFlow)
 
